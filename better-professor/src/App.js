@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Route exact path="/" render={props => <Login {...props} />} />
-      <PrivateRoute path="/protected" component={} />
+      <PrivateRoute path="/protected" component={SOMETHING} />
     </div>
   )
 }
