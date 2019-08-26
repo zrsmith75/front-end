@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { axiosWithAuth } from '../utilities/axiosWithAuth'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { register } from '../actions'
 
 const Registration = () => {
     const [newUser, setNawUser] = useState({name: '',username: '', email:'', password:''})
@@ -13,17 +14,7 @@ const Registration = () => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log('its work')
-        // axios
-        // .post('https://better-prof-app.herokuapp.com/api/professors/register', {
-        //     name: '',
-        //     username: '', 
-        //     email:'', 
-        //     password:''
-        // })
-        // .then(res => {
-        //     console.log(newUser)
-        // })
-        // .catch(err => console.log(err))
+
     }
     return(
         <>
@@ -64,4 +55,12 @@ const Registration = () => {
     ) 
 }
 
-export default Registration;
+const mapStateToProps = state => ({
+    isRegistering: state.isRegistering,
+    error: state.error
+})
+export default withRouter(
+    connect(mapStateToProps,
+    { register }
+  )(Registration)
+)    
