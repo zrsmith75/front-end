@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { axiosWithAuth } from '../utilities/axiosWithAuth'
+import axios from 'axios'
 
 const Registration = () => {
     const [newUser, setNawUser] = useState({name: '',username: '', email:'', password:''})
 
     const handleChange = e => {
-        console.log(newUser)
+        // console.log(newUser)
         setNawUser({...newUser, [e.target.name]: e.target.value})
     }
     const handleSubmit = e => {
         e.preventDefault();
         console.log('its work')
+        // axios
+        // .post('https://better-prof-app.herokuapp.com/api/professors/register', {
+        //     name: '',
+        //     username: '', 
+        //     email:'', 
+        //     password:''
+        // })
+        // .then(res => {
+        //     console.log(newUser)
+        // })
+        // .catch(err => console.log(err))
     }
     return(
         <>
@@ -37,7 +50,7 @@ const Registration = () => {
                 value={newUser.email}
             /><br/>
              <input 
-                type="text"
+                type="password"
                 name="password"
                 placeholder="password"
                 onChange={handleChange}
