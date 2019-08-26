@@ -5,21 +5,73 @@ import { withRouter } from 'react-router-dom'
 import { register } from '../actions'
 
 const Registration = props => {
-    // let token = localStorage.getItem('token');
-    //     if (token) {
-    //         props.history.push('/')
-    //     } 
-    const [newUser, setNawUser] = useState({name: '',username: '', email:'', password:''})
+    let token = localStorage.getItem('token');
+        if (token) {
+            props.history.push('/')
+        } 
+    const [newUser, setNewUser] = useState({name: '',username: '', email:'', password:''})
+    const [userNameErrors, setUserNameErrors] = useState("");
+    const [passwordErrors, setPasswordErrors] = useState("");
 
-    const handleChange = e => {
-        // console.log(newUser)
-        setNawUser({...newUser, [e.target.name]: e.target.value})
+    const defaultUser = {
+        username: "",
+        password: ""
+    };
+
+    const validateForm = () => {
+        let valid = true;
+
+        if (newUser.username.length === 0 || userNameErrors.length > 0) {
+        valid = false;
+        setUserNameErrors("Username must have at least 3 characters");
+        }
+
+        if (newUser.password.length === 0 || passwordErrors.length > 0) {
+        valid = false;
+        setPasswordErrors("Password must have at least 6 characters");
+        }
+
+        return valid;
+    };
+
+    const handleChange = event => {
+        event.preventDefault();
+        const { name, value } = event.target;
+
+        let userNameError = userNameErrors;
+        let passwordError = passwordErrors;
+
+        switch (name) {
+        case "username":
+            userNameError =
+            value.length < 3 ? "Username must have at least 3 characters" : "";
+            break;
+        case "password":
+            passwordError =
+            value.length < 6 ? "Password must have at least 6 characters" : "";
+            break;
+        default:
+            break;
+    }
+    setUserNameErrors(userNameError);
+    setPasswordErrors(passwordError);
+
+    setNewUser({ ...newUser, [name]: value });
     }
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('its work')
-
+        if (validateForm()) {
+            console.log("Valid Form")
+            props.register(props.history, newUser)
+            resetForm()
+        } else {
+            console.log("Invalid Form")
+        }
     }
+    const resetForm = () => {
+        setNewUser(defaultUser);
+      };
+    
     return(
         <>
         <form onSubmit={handleSubmit}>
