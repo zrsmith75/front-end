@@ -4,7 +4,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { register } from '../actions'
 
-const Registration = () => {
+const Registration = props => {
+    // let token = localStorage.getItem('token');
+    //     if (token) {
+    //         props.history.push('/')
+    //     } 
     const [newUser, setNawUser] = useState({name: '',username: '', email:'', password:''})
 
     const handleChange = e => {
