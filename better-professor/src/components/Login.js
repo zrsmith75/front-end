@@ -79,7 +79,7 @@ const Login = props => {
       .then(response => {
         console.log(response)
         localStorage.setItem("token", response.data.token)
-        props.history.push("/protected")
+        props.history.push("/students")
       })
       .catch(error => console.log("Failured Login", error))
     console.log(credentials)
@@ -111,7 +111,7 @@ const Login = props => {
               required
             />
           </label>
-          <LogIn>TESTING DEPLOYMENT</LogIn>
+          <LogIn>Log In</LogIn>
           <Link to="/registration">
             <SignUp>Sign Up</SignUp>
           </Link>
