@@ -1,22 +1,19 @@
-import React, { useState } from 'react'
-import { Route } from 'react-browser-router'
+import React, { useState, useEffect } from 'react'
+import { Route, NavLink } from 'react-browser-router'
+import { Segment } from 'semantic-ui-react'
 
 import StudentProfile from './StudentProfile'
+import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
-export default function StudentList(listOfStudents) {
-    const [Students, setStudents] = useState([])
+export default function StudentList() {
+    const [students, setStudents] = useState([])
     useEffect(() => {
       const getStudents = () => {
-        let config = {
-            headers: {
-              'Authorization': token
-            }
-          }
-        axios
-          .get('https://better-prof-app.herokuapp.com/api/students', bodyParameters, config)
+        axiosWithAuth()
+          .get('https://better-prof-app.herokuapp.com/api/students')
           .then(response => {
-            setStudents(response);
-            console.log(Students);
+            setStudents(response.data);
+            console.log(students);
           })
           .catch(error => {
             console.error('Server Error', error);
@@ -25,18 +22,23 @@ export default function StudentList(listOfStudents) {
 
       getStudents();
     }, []);
-
+ 
 
     return (
         <>
-        <div className="studentListContainer">
-            {listOfStudents.map(student => {
-                <div className="studentListCard">
-                    <h2>{student.name}</h2>
-                </div>
+        <Segment className="studentListContainer">
+            {students.map(student => {
+                return (
+                    <NavLink to={`/students/${student.id}/profile`} key={student.id}>
+                        <Segment className="studentListCard">
+                            {/*<img src={student.img} alt="student portrait"/>*/}
+                            <h2>{student.name}</h2>
+                        </Segment>
+                    </NavLink>
+                )
             })}
-        </div>
-        <Route path="/:studentid/profile" render={props => <StudentProfile {...props}/>} />
+        </Segment>
+        <Route path="/students/:id/profile" render={props => <StudentProfile {...props}/>} />
         </>
     )
 }
