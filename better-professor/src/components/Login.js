@@ -4,6 +4,20 @@ import axios from "axios"
 import Logo from "../images/Logo.png"
 import styled from "styled-components"
 
+export const BigDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #619800;
+  width: 65%;
+  height: 55%;
+  margin: 50px auto;
+  background: white;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+`
 export const LogIn = styled.button`
   border-radius: 15px;
   padding: 25px;
@@ -27,17 +41,6 @@ export const SignUp = styled.button`
   margin: 15px;
   color: white;
   font-size: 1.2rem;
-`
-export const BigDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid #619800;
-  width: 65%;
-  height: 55%;
-  margin: 50px auto;
-  background: white;
 `
 
 export const Image = styled.img`
