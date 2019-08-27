@@ -12,10 +12,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header>
-          
-        </header>
-
         <Route exact path="/" render={props => <Login {...props} />} />
         <Route path="/registration" component={Registration} />
         <PrivateRoute path="/protected" />
