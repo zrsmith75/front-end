@@ -10,14 +10,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <header>
-          <Link to="/registration">Sign up</Link>
-        </header> */}
-
         <Route exact path="/" render={props => <Login {...props} />} />
         <Route path="/registration" component={Registration} />
-        <PrivateRoute path="/protected" />
-        <PrivateRoute path="/students" component={StudentList} />
+        <PrivateRoute path="/protected" component={StudentList} />
       </div>
     </Router>
   )

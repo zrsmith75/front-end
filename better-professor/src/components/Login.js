@@ -1,10 +1,10 @@
 import React, { useState } from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import Logo from "../images/Logo.png"
-import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const LogIn = styled.button`
+export const LogIn = styled.button`
   border-radius: 15px;
   padding: 25px;
   background-color: #619800;
@@ -13,8 +13,10 @@ const LogIn = styled.button`
   border: none;
   justify-content: center;
   margin: 15px;
+  color: white;
+  font-size: 1.2rem;
 `
-const SignUp = styled.button`
+export const SignUp = styled.button`
   border-radius: 15px;
   padding: 25px 150px;
   background-color: #619800;
@@ -23,31 +25,33 @@ const SignUp = styled.button`
   border: none;
   justify-content: center;
   margin: 15px;
+  color: white;
+  font-size: 1.2rem;
 `
-const BigDiv = styled.div`
+export const BigDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 5px solid #619800;
   width: 65%;
-  height: 500px;
-  margin: 50px auto 0 auto;
+  height: 55%;
+  margin: 50px auto;
   background: white;
 `
 
-const Image = styled.img`
+export const Image = styled.img`
   width: 45%;
   height: auto;
   margin-bottom: 20px;
 `
 
-const Form = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
 `
 
-const Input = styled.input`
+export const Input = styled.input`
   margin-bottom: 40px;
   margin-left: 20px;
 `
