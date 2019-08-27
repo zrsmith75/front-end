@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         <Route exact path="/" render={props => <Login {...props} />} />
         <Route path="/registration" component={Registration} />
-        <PrivateRoute path="/protected" component={StudentList} />
+        <PrivateRoute path="/students" component={StudentList} />
       </div>
     </Router>
   )
