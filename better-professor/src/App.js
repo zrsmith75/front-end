@@ -1,14 +1,28 @@
 import React from "react"
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import "./App.css"
 import Login from "./components/Login"
-import PrivateRoute from "./utilities/PrivateRoute"
+
+import PrivateRoute from "./utilities/privateRoute"
+import Registration from './components/Registration'
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <Route exact path="/" render={props => <Login {...props} />} />
-      <PrivateRoute path="/protected" component={SOMETHING} />
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <Link to="/registration">Sign up</Link>
+        </header>
+        
+        <Route exact path="/" render={props => <Login {...props} />} />
+        <Route path="/registration" component={Registration} />
+        <PrivateRoute path="/protected" />
+      </div>
+    </Router>
   )
 }
 
