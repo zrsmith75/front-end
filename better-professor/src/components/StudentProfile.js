@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Segment } from 'semantic-ui-react'
 import styled from 'styled-components'
 
@@ -7,7 +7,6 @@ import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
 export default function StudentProfile(props) {
     const StudentProfileContainer = styled(Segment)`
-        width: 50%
     `
 
     const [student, setStudent] = useState([])
@@ -31,8 +30,11 @@ export default function StudentProfile(props) {
         <StudentProfileContainer className="studentProfileContainer">
             <Segment className="studentProfileHeaderContainer">
                 <h2>{student.name}</h2>
+                <span>Program: {student.grad_program}</span>
+                <br />
                 <img src={student.img} alt='portrait of student' />
             </Segment>
+            <h2>Projects</h2>
             <Segment className="studentProfileProjectsContainer">
                 {student.projects && student.projects.map( project => {
                     return (
