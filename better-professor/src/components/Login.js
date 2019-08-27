@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import axios from "axios"
 import Logo from "../images/Logo.png"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const Submit = styled.button`
+const LogIn = styled.button`
   border-radius: 15px;
   padding: 25px;
   background-color: #619800;
@@ -11,6 +12,17 @@ const Submit = styled.button`
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.4);
   border: none;
   justify-content: center;
+  margin: 15px;
+`
+const SignUp = styled.button`
+  border-radius: 15px;
+  padding: 25px 150px;
+  background-color: #619800;
+  color: black;
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.4);
+  border: none;
+  justify-content: center;
+  margin: 15px;
 `
 const BigDiv = styled.div`
   display: flex;
@@ -59,13 +71,11 @@ const Login = props => {
         "https://better-prof-app.herokuapp.com/api/professors/login",
         credentials
       )
-      .then(
-        response => {
-          console.log(response);
-          localStorage.setItem("token", response.data.token);
-          props.history.push("/protected")
-        }
-      )
+      .then(response => {
+        console.log(response)
+        localStorage.setItem("token", response.data.token)
+        props.history.push("/protected")
+      })
       .catch(error => console.log("Failured Login", error))
     console.log(credentials)
   }
@@ -96,7 +106,10 @@ const Login = props => {
               required
             />
           </label>
-          <Submit>Submit</Submit>
+          <LogIn>Log In</LogIn>
+          <Link to="/registration">
+            <SignUp>Sign Up</SignUp>
+          </Link>
         </Form>
       </BigDiv>
     </>
