@@ -56,9 +56,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   margin-bottom: 40px;
-  margin-left: 20px;
 `
-
 const Login = props => {
   const [credentials, setCredentials] = useState({
     username: "jsmith",
@@ -113,7 +111,7 @@ const Login = props => {
               required
             />
           </label>
-          <LogIn>Log In</LogIn>
+          <LogIn>TESTING DEPLOYMENT</LogIn>
           <Link to="/registration">
             <SignUp>Sign Up</SignUp>
           </Link>
