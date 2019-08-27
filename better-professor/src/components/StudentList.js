@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, NavLink } from 'react-browser-router'
+import { Route, NavLink } from 'react-router-dom'
 import { Segment } from 'semantic-ui-react'
 
 import StudentProfile from './StudentProfile'

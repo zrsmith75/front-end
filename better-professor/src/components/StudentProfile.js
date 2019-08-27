@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, NavLink } from 'react-browser-router'
+import { Route, NavLink } from 'react-router-dom'
 import { Segment } from 'semantic-ui-react'
 
 import { axiosWithAuth } from '../utilities/axiosWithAuth'
@@ -15,8 +15,8 @@ export default function StudentProfile(props) {
             setStudent(response.data);
           })
           .catch(error => {
-            console.error('Server Error', error);
-          });
+            console.error('Server Error', error)
+          })
       }
 
       getStudent();
@@ -24,19 +24,21 @@ export default function StudentProfile(props) {
 
     return (
         <Segment className="studentProfileContainer">
-            <div className="studentProfileHeaderContainer">
+            <Segment className="studentProfileHeaderContainer">
                 <h2>{student.name}</h2>
                 {/* <img src={student.img} alt='portrait of student' /> */}
-            </div>
-            <div className="studentProfileProjectsContainer">
+            </Segment>
+            <Segment className="studentProfileProjectsContainer">
                 {student.projects && student.projects.map( project => {
                     return (
-                        <div>
-                            <h3>{project.name}</h3>
-                        </div>
+                        <Segment>
+                            <NavLink to={``}>
+                                <h3>{project.name}</h3>
+                            </NavLink>
+                        </Segment>
                     )
                 })}
-            </div>
+            </Segment>
         </Segment>
     )
 }
