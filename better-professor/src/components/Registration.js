@@ -6,11 +6,12 @@ import { register } from "../actions"
 import { SignUp, BigDiv, Image, Form, Input } from "./Login"
 import Logo from "../images/Logo.png"
 import styled from "styled-components"
+import "./registration.css"
 
 const SignIn = styled.p`
   font-size: 1.2rem;
   text-decoration: none;
-  color: black;
+  padding-bottom: 1.2rem;
 `
 
 const Registration = props => {
@@ -91,7 +92,7 @@ const Registration = props => {
       <BigDiv>
         <Image src={Logo} alt="It's our logo!" />
         <Form onSubmit={handleSubmit}>
-          <label>
+          <label className="label">
             Name
             <Input
               type="text"
@@ -101,24 +102,24 @@ const Registration = props => {
               value={newUser.name}
             />
           </label>
+          <label className="label">
+            Email  
+            <Input
+              type="text"
+              name="email"
+              placeholder="email"
+              onChange={handleChange}
+              value={newUser.email}
+            />
+          </label>
           <label>
             Username
             <Input
               type="text"
               name="username"
-              placeholder="Username"
+              placeholder="username"
               onChange={handleChange}
               value={newUser.username}
-            />
-          </label>
-          <label>
-            Email
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onChange={handleChange}
-              value={newUser.email}
             />
           </label>
           <label>
@@ -131,13 +132,11 @@ const Registration = props => {
               value={newUser.password}
             />
           </label>
-
           <SignUp type="submit">Sign up</SignUp>
-          <SignIn>
-            <Link to="/">Already have an account</Link>
-          </SignIn>
         </Form>
+        <SignIn>Already have an account <Link to="/">Log in</Link></SignIn>
       </BigDiv>
+      
     </>
   )
 }
