@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { register } from "../actions"
-import { SignUp, BigDiv, Image, Form, Input, LogIn } from "./Login"
+import { SignUp, BigDiv, Image, Form, Input } from "./Login"
 import Logo from "../images/Logo.png"
 import styled from "styled-components"
 
@@ -92,45 +92,41 @@ const Registration = props => {
         <Image src={Logo} alt="It's our logo!" />
         <Form onSubmit={handleSubmit}>
           <label>
-            {" "}
             Name
             <Input
               type="text"
               name="name"
-              placeholder="name"
+              placeholder="Name"
               onChange={handleChange}
               value={newUser.name}
             />
           </label>
           <label>
-            {" "}
             Username
             <Input
               type="text"
               name="username"
-              placeholder="username"
+              placeholder="Username"
               onChange={handleChange}
               value={newUser.username}
             />
           </label>
           <label>
-            {" "}
             Email
             <Input
-              type="text"
+              type="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               onChange={handleChange}
               value={newUser.email}
             />
           </label>
           <label>
-            {" "}
             Password
             <Input
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Password"
               onChange={handleChange}
               value={newUser.password}
             />
