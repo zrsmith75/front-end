@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { register } from '../actions'
+import { Submit, BigDiv, Image, Form, Input } from './Login'
+import Logo from "../images/Logo.png"
 
 const Registration = props => {
-    let token = localStorage.getItem('token');
-        if (token) {
-            props.history.push('/')
-        } 
+    // let token = localStorage.getItem('token');
+    //     if (token) {
+    //         props.history.push('/')
+    //     } 
     const [newUser, setNewUser] = useState({name: '',username: '', email:'', password:''})
     const [userNameErrors, setUserNameErrors] = useState("");
     const [passwordErrors, setPasswordErrors] = useState("");
@@ -74,39 +76,53 @@ const Registration = props => {
     
     return(
         <>
-        <form onSubmit={handleSubmit}>
-            <input 
+        <BigDiv>
+        <Image src={Logo} alt="It's our logo!" />
+        <Form onSubmit={handleSubmit}>
+            
+            
+        <label> Name
+            <Input 
                 type="text"
                 name="name"
                 placeholder="name"
                 onChange={handleChange}
                 value={newUser.name}
-            /> <br/>
-            <input 
+            /> 
+            </label>
+            <label> Username
+            <Input 
                 type="text"
                 name="username"
                 placeholder="username"
                 onChange={handleChange}
                 value={newUser.username}
-            /> <br/>
-             <input 
+            /> 
+            </label>
+            <label> Email
+             <Input 
                 type="text"
                 name="email"
                 placeholder="email"
                 onChange={handleChange}
                 value={newUser.email}
-            /><br/>
-             <input 
+            />
+            </label>
+            <label> Password
+             <Input 
                 type="password"
                 name="password"
                 placeholder="password"
                 onChange={handleChange}
                 value={newUser.password}
-            /><br/>
+            />
+            </label>
             
-            <button type="submit">Sign up</button><br/>
+            <Submit type="submit">Sign up</Submit>
+            </Form>
+            </BigDiv>
             <Link to="/">Already have an account</Link>
-        </form>
+        
         </>
     ) 
 }

@@ -1,9 +1,10 @@
 import React, { useState } from "react"
+import { Link } from 'react-router-dom';
 import axios from "axios"
 import Logo from "../images/Logo.png"
 import styled from "styled-components"
 
-const Submit = styled.button`
+export const Submit = styled.button`
   border-radius: 15px;
   padding: 25px;
   background-color: #619800;
@@ -12,7 +13,7 @@ const Submit = styled.button`
   border: none;
   justify-content: center;
 `
-const BigDiv = styled.div`
+export const BigDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,19 +24,19 @@ const BigDiv = styled.div`
   margin: 50px auto 0 auto;
   background: white;
 `
-
-const Image = styled.img`
+ 
+export const Image = styled.img`
   width: 45%;
   height: auto;
   margin-bottom: 20px;
 `
-
-const Form = styled.form`
+ 
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
 `
 
-const Input = styled.input`
+export  const Input = styled.input`
   margin-bottom: 40px;
   margin-left: 20px;
 `
@@ -99,6 +100,7 @@ const Login = props => {
           <Submit>Submit</Submit>
         </Form>
       </BigDiv>
+      <h4>Don't have an accont? <Link to="/registration">Sign up</Link></h4>
     </>
   )
 }

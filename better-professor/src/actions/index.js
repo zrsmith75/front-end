@@ -6,6 +6,7 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
 export const register = (history, credentials) => dispatch => {
+    console.log(credentials)
     dispatch({
         type: REGISTER_START
     });

@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <header>
-          <Link to="/registration">Sign up</Link>
+          
         </header>
 
         <Route exact path="/" render={props => <Login {...props} />} />
