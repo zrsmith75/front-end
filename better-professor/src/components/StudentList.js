@@ -29,7 +29,7 @@ export default function StudentList() {
         <Segment className="studentListContainer">
             {students.map(student => {
                 return (
-                    <NavLink to={`/students/${student.id}/profile`} key={student.id}>
+                    <NavLink exact to={`/students/${student.id}/`} key={student.id}>
                         <Segment className="studentListCard">
                             {/*<img src={student.img} alt="student portrait"/>*/}
                             <h2>{student.name}</h2>
@@ -38,7 +38,7 @@ export default function StudentList() {
                 )
             })}
         </Segment>
-        <Route path="/students/:id/profile" render={props => <StudentProfile {...props}/>} />
+        <Route path="/students/:id/" render={props => <StudentProfile {...props}/>} />
         </>
     )
 }
