@@ -21,18 +21,18 @@ export default function StudentProfile(props) {
 
       getStudent();
     }, [props.match.params.id]);
-
+ 
     return (
         <Segment className="studentProfileContainer">
             <Segment className="studentProfileHeaderContainer">
                 <h2>{student.name}</h2>
-                {/* <img src={student.img} alt='portrait of student' /> */}
+                <img src={student.img} alt='portrait of student' />
             </Segment>
             <Segment className="studentProfileProjectsContainer">
                 {student.projects && student.projects.map( project => {
                     return (
                         <Segment>
-                            <NavLink to={``}>
+                            <NavLink to={`/students/${student.id}/project/${project.project_id}`}>
                                 <h3>{project.name}</h3>
                             </NavLink>
                         </Segment>
