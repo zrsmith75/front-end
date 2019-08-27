@@ -60,10 +60,11 @@ const Login = props => {
         credentials
       )
       .then(
-        response => (
-          localStorage.setItem("token", response.data.payload),
+        response => {
+          console.log(response);
+          localStorage.setItem("token", response.data.token);
           props.history.push("/protected")
-        )
+        }
       )
       .catch(error => console.log("Failured Login", error))
     console.log(credentials)

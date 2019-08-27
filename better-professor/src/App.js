@@ -5,6 +5,8 @@ import Login from "./components/Login"
 
 import PrivateRoute from "./utilities/PrivateRoute"
 import Registration from "./components/Registration"
+import StudentList from './components/StudentList'
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route exact path="/" render={props => <Login {...props} />} />
         <Route path="/registration" component={Registration} />
         <PrivateRoute path="/protected" />
+        <PrivateRoute path="/students" component={StudentList}/>
       </div>
     </Router>
   )
