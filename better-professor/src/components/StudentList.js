@@ -32,7 +32,6 @@ export default function StudentList(listOfStudents) {
         <div className="studentListContainer">
             {listOfStudents.map(student => {
                 <div className="studentListCard">
-                    <input type="checkbox"></input>
                     <h2>{student.name}</h2>
                 </div>
             })}
