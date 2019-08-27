@@ -7,7 +7,7 @@ import styled from "styled-components"
 export const Submit = styled.button`
   border-radius: 15px;
   padding: 25px;
-  background-color: #629800;
+  background-color: #619800;
   color: black;
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.4);
   border: none;
@@ -18,7 +18,7 @@ export const BigDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 5px solid #629800;
+  border: 5px solid #619800;
   width: 65%;
   height: 500px;
   margin: 50px auto 0 auto;
@@ -61,10 +61,11 @@ const Login = props => {
         credentials
       )
       .then(
-        response => (
-          localStorage.setItem("token", response.data.payload),
+        response => {
+          console.log(response);
+          localStorage.setItem("token", response.data.token);
           props.history.push("/protected")
-        )
+        }
       )
       .catch(error => console.log("Failured Login", error))
     console.log(credentials)
