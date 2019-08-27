@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Route, NavLink } from 'react-router-dom'
 import { Segment } from 'semantic-ui-react'
+import styled from 'styled-components'
 
 import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
 export default function StudentProfile(props) {
+    const StudentProfileContainer = styled(Segment)`
+        width: 50%
+    `
+
     const [student, setStudent] = useState([])
     useEffect(() => {
       const getStudent = () => {
@@ -23,7 +28,7 @@ export default function StudentProfile(props) {
     }, [props.match.params.id]);
  
     return (
-        <Segment className="studentProfileContainer">
+        <StudentProfileContainer className="studentProfileContainer">
             <Segment className="studentProfileHeaderContainer">
                 <h2>{student.name}</h2>
                 <img src={student.img} alt='portrait of student' />
@@ -39,6 +44,6 @@ export default function StudentProfile(props) {
                     )
                 })}
             </Segment>
-        </Segment>
+        </StudentProfileContainer>
     )
 }
